@@ -1,0 +1,19 @@
+<view class='main-container'>
+  <text>Hello world</text>
+  <view class='menu_container'>
+    <ul>
+      <li class='menu' bindtap="jumpToMoudle">
+        流动性风险
+      </li>
+      <li class='menu' bindtap="jumpToMoudle">
+        净资本
+      </li>
+      <li class='menu' bindtap="jumpToMoudle">
+        操作风险
+      </li>
+      <li class='menu' bindtap="jumpToMoudle">
+        信用风险
+      </li>
+    </ul>
+  </view>
+</view>
