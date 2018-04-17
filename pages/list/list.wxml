@@ -1,3 +1,9 @@
 <view>
   <text>Menu List</text>
+  <view wx:for="{{dataList}}" wx:key="id">
+    <view class='p_menu' bindtap='hiddenSub' data-index="{{index}}" >{{item.name}}</view>
+    <view class='{{item.id}}'wx:for="{{item.twodata}}" wx:for-item="twodata" wx:key="id" hidden='{{item.hidden}}'>
+      <view class='sub_item' bindtap='tap'>{{twodata.name}}</view>
+    </view>
+  </view>
 </view>

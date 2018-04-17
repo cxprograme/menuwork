@@ -1,5 +1,10 @@
 //app.js
+var wxQuery = require('./utils/wxquery.js');
 App({
+
+ /** 全局引入wxQuery */
+  wxQuery: wxQuery,
+  $: wxQuery.$,
   onLaunch: function () {
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []

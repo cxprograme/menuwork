@@ -1,10 +1,48 @@
+var app = getApp();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    dataList: [{
+      id: 1,
+      name: '应季鲜果',
+      count: 1,
+      hidden:false,
+      twodata: [{
+        'id': 11,
+        'name': '鸡脆骨'
+      }, {
+        'id': 12,
+        'name': '鸡爪'
+      }]
+    }, {
+      id: 2,
+      name: '精致糕点',
+      count: 6,
+      hidden: false,
+      twodata: [{
+        'id': 13,
+        'name': '羔羊排骨一条'
+      }, {
+        'id': 14,
+        'name': '微辣'
+      }]
+    }, {
+      id: 3,
+      name: '全球美食烘培原料',
+      count: 12,
+      hidden: false,
+      twodata: [{
+        'id': 15,
+        'name': '秋刀鱼'
+      }, {
+        'id': 16,
+        'name': '锡箔纸金针菇'
+      }]
+    }]
   },
 
   /**
@@ -61,5 +99,16 @@ Page({
    */
   onShareAppMessage: function () {
     
+  },
+  tap:function(){
+    console.log('1')
+  },
+  hiddenSub:function(event){
+    console.log(event);
+    var index = event.target.dataset.index;
+    this.data.dataList[index].hidden=true;
+    this.setData({
+      dataList:this.data.dataList
+    });
   }
 })
