@@ -8,15 +8,28 @@ Page({
   data: {
     dataList: [{
       id: 1,
-      name: '应季鲜果',
+      name: '融资负债管理',
       count: 1,
       hidden:false,
       twodata: [{
         'id': 11,
-        'name': '鸡脆骨'
+        'name': '融资负债录入',
+        'detail':{
+          'pageid':'21200068',
+          'js':'FinanInput',
+          'lcrxml':'financingResource',
+          'procedure':'p_exec_lcr_financing'
+        }
       }, {
         'id': 12,
-        'name': '鸡爪'
+        'name': '融资负债维护',
+        'detail': {
+          'pageid': '21200110',
+          'js': 'FinanInput',
+          'lcrxml': 'financingResource',
+          'procedure': 'p_exec_lcr_financing'
+        }
+
       }]
     }, {
       id: 2,
@@ -100,8 +113,14 @@ Page({
   onShareAppMessage: function () {
     
   },
-  tap:function(){
-    console.log('1')
+  tap:function(event){
+    console.log(event);
+    var pindex = event.target.dataset.pindex;
+    var subindex = event.target.dataset.idex;
+    var details = this.data.dataList[pindex].twodata[subindex].detail;
+    wx.navigateTo({
+      url: '../detail/detail?details='+JSON.stringify(details),
+    })
   },
   hiddenSub:function(event){
     console.log(event);

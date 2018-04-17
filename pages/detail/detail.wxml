@@ -1,0 +1,5 @@
+<view class='detail-container'>
+  <view class='pg'>
+    {{detailList.js}}---{{detailList.pageid}}
+  </view>
+</view>
