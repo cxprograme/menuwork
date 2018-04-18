@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    flag:true,
     dataList: [{
       id: 1,
       name: '融资负债管理',
@@ -114,7 +115,7 @@ Page({
     
   },
   tap:function(event){
-    console.log(event);
+    // console.log(event);
     var pindex = event.target.dataset.pindex;
     var subindex = event.target.dataset.idex;
     var details = this.data.dataList[pindex].twodata[subindex].detail;
@@ -123,11 +124,23 @@ Page({
     })
   },
   hiddenSub:function(event){
-    console.log(event);
+    // console.log(event);
     var index = event.target.dataset.index;
-    this.data.dataList[index].hidden=true;
+    if(this.data.flag){
+      this.data.dataList[index].hidden = true;
+      
+      this.setData({
+        flag:false
+      });
+    }else{
+      this.data.dataList[index].hidden = false;
+      this.setData({
+        flag: true
+      });
+    }
+    
     this.setData({
-      dataList:this.data.dataList
+      dataList: this.data.dataList
     });
   }
 })
