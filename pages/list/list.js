@@ -7,63 +7,32 @@ Page({
    */
   data: {
     flag:true,
-    dataList: [{
-      id: 1,
-      name: '融资负债管理',
-      count: 1,
-      hidden:false,
-      twodata: [{
-        'id': 11,
-        'name': '融资负债录入',
-        'detail':{
-          'pageid':'21200068',
-          'js':'FinanInput',
-          'lcrxml':'financingResource',
-          'procedure':'p_exec_lcr_financing'
-        }
-      }, {
-        'id': 12,
-        'name': '融资负债维护',
-        'detail': {
-          'pageid': '21200110',
-          'js': 'FinanInput',
-          'lcrxml': 'financingResource',
-          'procedure': 'p_exec_lcr_financing'
-        }
-
-      }]
-    }, {
-      id: 2,
-      name: '精致糕点',
-      count: 6,
-      hidden: false,
-      twodata: [{
-        'id': 13,
-        'name': '羔羊排骨一条'
-      }, {
-        'id': 14,
-        'name': '微辣'
-      }]
-    }, {
-      id: 3,
-      name: '全球美食烘培原料',
-      count: 12,
-      hidden: false,
-      twodata: [{
-        'id': 15,
-        'name': '秋刀鱼'
-      }, {
-        'id': 16,
-        'name': '锡箔纸金针菇'
-      }]
-    }]
+    dataList: []
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    var _this=this;
+    wx.request({
+      url: 'http://localhost:8081/menuwork/menus/psmenus',
+      data: {
+        menu_type: '0',
+        user_id: 'default_menu',
+        parent_menu_id: 'userRoot'
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        _this.setData({
+          dataList:res.data
+        })
+      }
+
+    })  
   },
 
   /**

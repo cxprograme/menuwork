@@ -1,0 +1,31 @@
+.detail-container {
+    background-color : #FBF9FE;
+    font-family : -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+    flex : 1;
+    min-height : 100%;
+    font-size : 32rpx;
+}
+.de-content{
+  width: 375rpx;
+  height: 450rpx;
+  margin: 10rpx auto;
+}
+.de-img{
+  display: block;
+  max-width: 100%;
+  height: 100%;
+}
+.de-info{
+    display: flex;
+    margin-top : 10rpx;
+    margin-bottom : 10rpx;
+    background-color : #FFFFFF;
+    overflow : hidden;
+    border-radius : 4rpx;
+    padding: 20rpx 40rpx;
+    justify-content:center; 
+    
+}
+.de-info text{
+  width:50%;
+}

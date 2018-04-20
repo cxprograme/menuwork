@@ -5,14 +5,44 @@ Page({
    * 页面的初始数据
    */
   data: {
-    
+    menulist:[],
+    dataList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    // wx.request({
+    //   url: 'http://localhost:8081/menuwork/menus',
+    //   data: {},
+    //   method: 'GET',
+    //   header: {
+    //     'content-type': 'application/json'
+    //   },
+    //   success: function (res) {
+    //     console.log(res.data)
+    //   }
+    // })
+    var _this = this;
+    wx.request({
+      url: 'http://localhost:8081/menuwork/menus/psmenus',
+      data: {
+        menu_type: '0',
+        user_id: 'default_menu',
+        parent_menu_id: 'userRoot'
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        _this.setData({
+          dataList: res.data
+        })
+      }
+
+    })  
   },
 
   /**
