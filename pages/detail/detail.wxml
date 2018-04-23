@@ -12,7 +12,7 @@
     <view class='de-intro'>
       <view class='de-info de-html'>
         <text>HTML:</text>
-        <text>21200068</text>
+        <text>{{detail.page_id}}</text>
       </view>
       <view class='de-info de-js'>
         <text>Javascript:</text>

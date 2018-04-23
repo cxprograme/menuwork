@@ -28,15 +28,26 @@ Component({
      * 跳转二级页面
      */
     tap: function (event) {
-      // console.log(event);
-      // var pindex = event.target.dataset.pindex;
-      // var subindex = event.target.dataset.idex;
-      // var details = this.data.dataList[pindex].twodata[subindex].detail;
       var sid =event.target.dataset.sid;
       console.log(sid);
-      // wx.navigateTo({
-      //   url: '../detail/detail?details=' + JSON.stringify(details),
-      // })
+      var _this = this;
+      wx.request({
+        url: 'http://localhost:8081/menuwork/menus/psmenus',
+        data: {
+          menu_type: '0,1',
+          user_id: 'default_menu',
+          parent_menu_id: sid
+        },
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        success: function (res) {
+          _this.setData({
+            dataList: res.data
+          })
+        }
+      })
     },
     /**
      * toggle事件
@@ -45,7 +56,13 @@ Component({
       // console.log(event);
       var index = event.target.dataset.index;
       console.log(this.data.dataList[index].sub_menu)
-      if (!this.data.dataList[index].sub_menu) return;
+      if (this.data.dataList[index].sub_menu.length == 0){
+        var menu_id = event.target.dataset.pid;
+        wx.navigateTo({
+          url: '../detail/detail?menu_id='+menu_id
+        });
+        return;
+      }
       if (!this.data.dataList[index].hidden) {
         this.data.dataList[index].hidden = true;
 

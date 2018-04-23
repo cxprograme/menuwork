@@ -13,8 +13,26 @@ Page({
    */
   onLoad: function (options) {
     // console.log(JSON.stringify(options.details));
-    this.setData({
-      detailList:JSON.parse(options.details)
+    // this.setData({
+    //   detailList:JSON.parse(options.details)
+    // })
+    console.log(options.menu_id);
+    var menu_id = options.menu_id;
+    var _this = this;
+    wx.request({
+      url: 'http://localhost:8081/menuwork/menus/detail',
+      data:{
+        menu_id:menu_id
+      },
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+        _this.setData({
+          detail: res.data
+        })
+      }
     })
   },
 
